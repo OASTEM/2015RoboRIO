@@ -1,1 +1,1 @@
-Guys you have to have a readme
+Welcome to OASTEM's 2015 RoboRIO Tests!
