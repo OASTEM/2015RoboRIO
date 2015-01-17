@@ -1,14 +1,14 @@
 package org.oastem.frc;
-
+/*
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.DriverStationLCD.Line;
-
+*/
 /**
  * A debug class.
  *
  * @author KTOmega
  */
-public class Debug {
+/*public class Debug {
 
     private static Line[] lines = new Line[]{
         Line.kMain6,
@@ -19,7 +19,7 @@ public class Debug {
         Line.kUser6
     };
     private static DriverStationLCD ds = DriverStationLCD.getInstance();
-
+*/
     /**
      * Log to Driver Station LCD.
      *
@@ -27,7 +27,7 @@ public class Debug {
      * @param col The column - either 1 or 2.
      * @param text The line to send.
      */
-    public static void log(int ln, int col, String text) {
+/*    public static void log(int ln, int col, String text) {
         Line line = lines[ln - 1];
         int pos = col == 1 ? 1 : (DriverStationLCD.kLineLength / 2);
 
@@ -49,7 +49,7 @@ public class Debug {
             /*if (text.length > 6) {
                 pos = i < 6 ? 1 : DriverStationLCD.kLineLength / 2;
                 out = out.substring(0, (DriverStationLCD.kLineLength / 2) - 1); // Constrain
-            }*/
+            }
 
             ds.println(line, pos, out);
         }
@@ -86,4 +86,4 @@ public class Debug {
     private static void update() {
         ds.updateLCD();
     }
-}
+}*/

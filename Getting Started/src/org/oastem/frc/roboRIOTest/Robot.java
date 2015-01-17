@@ -10,7 +10,7 @@ package org.oastem.frc.roboRIOTest;
 
 import edu.wpi.first.wpilibj.*;
 import org.oastem.frc.control.*;
-import org.oastem.frc.Debug;
+//import org.oastem.frc.Debug;
 import org.oastem.frc.sensor.*;
 
 
@@ -31,14 +31,14 @@ public class Robot extends SampleRobot {
     private Jaguar motor3;
     private Jaguar motor4;
     
-    String[] debug = new String[6];
+    //String[] debug = new String[6];
     
     private final int LEFT_FRONT_DRIVE_PORT = 1;
     private final int LEFT_BACK_DRIVE_PORT = 2;
     private final int RIGHT_FRONT_DRIVE_PORT = 3;
     private final int RIGHT_BACK_DRIVE_PORT = 4;
     
-    private final int JOYSTICK = 1; 
+    private final int JOYSTICK = 0; 
     
     private final int WHEEL_CIRCUMFERENCE = 7;
     private final int ENCODER_CH_A = 14;
@@ -48,18 +48,15 @@ public class Robot extends SampleRobot {
     
     private QuadratureEncoder encoder;
     private ADW22307Gyro gyro;
-    /*
-    private Compressor compress;
+    
+    private Compressor comp;
     private DoubleSolenoid solen;
-    private Relay rel;
-    //*/
     
     private final int GYRO_PORT = 1;
-    /*
-    private final int PRESSURE_SWITCH_CHANNEL = 3;
-    private final int COMP_RELAY_CHANNEL = 1;
-    private final int SOLEN_FORWARD_CHANNEL = 1;  // FIGURE OUT THE ACTUAL NUMBER
-    private final int SOLEN_BACKWARD_CHANNEL = 2; // FIGURE OUT THE ACTUAL NUMBER
+    
+    private final int SOLEN_FORWARD_CHANNEL = 3;  
+    private final int SOLEN_BACKWARD_CHANNEL = 2;
+    private final int PCM_MODULE_NO = 62;
     
     private final int SOL_FORWARD_BUTTON = 4;
     private final int SOL_REVERSE_BUTTON = 5;
@@ -71,11 +68,12 @@ public class Robot extends SampleRobot {
                 RIGHT_FRONT_DRIVE_PORT, RIGHT_BACK_DRIVE_PORT);
         
         motor1 = new Jaguar(LEFT_FRONT_DRIVE_PORT);
+
         motor2 = new Jaguar(LEFT_BACK_DRIVE_PORT);
         motor3 = new Jaguar(RIGHT_FRONT_DRIVE_PORT);
         motor4 = new Jaguar(RIGHT_BACK_DRIVE_PORT);
         */
-        js = new Joystick(JOYSTICK);
+        //js = new Joystick(JOYSTICK);
 
         motor1 = new Jaguar(ENC_JAG_PORT);
 
@@ -85,14 +83,12 @@ public class Robot extends SampleRobot {
         encoder.setDistancePerPulse(WHEEL_CIRCUMFERENCE);
         
         gyro = new ADW22307Gyro(GYRO_PORT);
-        /*
-        compress = new Compressor(PRESSURE_SWITCH_CHANNEL, COMP_RELAY_CHANNEL);
-        //compress.start();
-        solen = new DoubleSolenoid(SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
-        //*/
         
-        Debug.clear();
-        Debug.log(1, 1, "Robot initialized.");
+        //solen = new DoubleSolenoid(SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
+        
+        
+        //Debug.clear();
+        //Debug.log(1, 1, "Robot initialized.");
     }
     
     
@@ -106,15 +102,19 @@ public class Robot extends SampleRobot {
         long startTime = 0;
         boolean motorStart = false;
         encoder.reset();
-        Debug.clear();
+        //Debug.clear();
+        js = new Joystick(JOYSTICK);
+        solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
+        
         while(isEnabled() && isOperatorControl()){
-            Debug.clear();
+        	
+            //Debug.clear();
             currentTime = System.currentTimeMillis();
             //debug[0] = "Drive Speed: " + js.getY();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
-            motor1.set(js.getY());
+            //motor1.set(js.getY());
             
-            
+            /*
             // OUTPUT
             debug[1] = "Enc: " + encoder.get();
             
@@ -125,7 +125,7 @@ public class Robot extends SampleRobot {
                 debug[2] = "Going Forward";
             else
                 debug[2] = "Going Backward";
-            //*/
+            //
             
             
             // get VS getRaw
@@ -145,36 +145,46 @@ public class Robot extends SampleRobot {
                 debug[5] = "Encoder stopped";
             else
                 debug[5] = "Encoder going";
-            //*/
+            //
             
             
             // encodingScale
             //ACTIVATE LINE AT INIT
             //look at how enc.get() is different
             //also compare with getRaw()
+            //*/
             
             
             
-            /*
             if (js.getRawButton(SOL_FORWARD_BUTTON))
             {
                 solen.set(DoubleSolenoid.Value.kForward);
-                debug[1] = "solen FORWARD";
+                System.out.println("Forward!");
+                //debug[1] = "solen FORWARD";
             }
             else if (js.getRawButton(SOL_REVERSE_BUTTON))
             {
                 solen.set(DoubleSolenoid.Value.kReverse);
-                debug[1] = "solen REVERSE";
+                System.out.println("REVERSE!");
+                //debug[1] = "solen REVERSE";
             }
             else
             {
                 solen.set(DoubleSolenoid.Value.kOff);
-                debug[1] = "solen OFF";
+                System.out.println("OFF!");
+                //debug[1] = "solen OFF";
             }
-            //*/
-
+            /*
+            if (solen.get() == DoubleSolenoid.Value.kOff)
+            	System.out.println("Holy crap it's off");
+            
+            if (solen.get() == DoubleSolenoid.Value.kForward)
+            	System.out.println("Heey Forwward");
+            
+            if (solen.get() == DoubleSolenoid.Value.kReverse)
+            	System.out.println("Back");*/
             //debug[1] = "Gyro: " + gyro.getAngle();
-            Debug.log(debug);
+            //Debug.log(debug);
         }
     }
     

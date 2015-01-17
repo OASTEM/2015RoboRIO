@@ -7,13 +7,13 @@ package org.oastem.frc;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.parsing.IInputOutput;
+//import edu.wpi.first.wpilibj.parsing.IInputOutput;
 
 /**
  *
  * @author KTOmega
  */
-public class DualJoystick extends GenericHID implements IInputOutput {
+/*public class DualJoystick extends GenericHID implements IInputOutput {
     
     private Joystick left;
     private Joystick right;
@@ -106,4 +106,4 @@ public class DualJoystick extends GenericHID implements IInputOutput {
         double rightVal = right.getZ();
         return nonZero(leftVal, rightVal);
     }
-}
+}*/

@@ -5607,3 +5607,450 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-14 16:25:32.091
 !MESSAGE Installedjava
+!SESSION 2015-01-14 17:38:34.141 -----------------------------------------------
+eclipse.buildId=4.4.1.M20140925-0400
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-01-14 17:38:50.212
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-01-14 17:38:50.213
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\OA STEM'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-14 17:38:51.099
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-14 17:38:51.102
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-14 17:38:51.103
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-14 17:38:51.105
+!MESSAGE Installedjava
+!SESSION 2015-01-15 14:38:48.020 -----------------------------------------------
+eclipse.buildId=4.4.1.M20140925-0400
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-01-15 14:39:30.281
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-01-15 14:39:30.307
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\OA STEM'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-15 14:39:34.737
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-15 14:39:34.738
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-15 14:39:34.779
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-15 14:39:34.780
+!MESSAGE Installedjava
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-01-15 14:39:35.006
+!MESSAGE Connection to http://download.eclipse.org/releases/luna/p2.index failed on download.eclipse.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(Unknown Source)
+	at java.net.InetAddress.getAddressesFromNameService(Unknown Source)
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2015-01-15 14:39:35.582
+!MESSAGE Unknown Host: http://download.eclipse.org/releases/luna/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:294)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-01-15 14:39:36.366
+!MESSAGE Connection to http://first.wpi.edu/FRC/roborio/release/eclipse/p2.index failed on first.wpi.edu. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: first.wpi.edu
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(Unknown Source)
+	at java.net.InetAddress.getAddressesFromNameService(Unknown Source)
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2015-01-15 14:39:36.653
+!MESSAGE Unknown Host: http://first.wpi.edu/FRC/roborio/release/eclipse/content.xml
+!STACK 0
+java.net.UnknownHostException: first.wpi.edu
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:294)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2015-01-15 14:39:36.678
+!MESSAGE Connection to http://download.eclipse.org/eclipse/updates/4.4/p2.index failed on download.eclipse.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1077)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1068)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1064)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:73)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2015-01-15 14:39:36.962
+!MESSAGE Unknown Host: http://download.eclipse.org/eclipse/updates/4.4/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:294)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:643)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:259)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:07:48.859
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:07:48.860
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:10:58.799
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:10:58.800
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:21:57.501
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:21:57.501
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:22:41.606
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:22:41.606
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:24:15.171
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:24:15.172
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:24:38.016
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:24:38.017
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:32:07.512
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:32:07.513
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:39:16.140
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:39:16.141
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:43:20.416
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:43:20.418
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:52:06.367
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:52:06.368
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:53:28.958
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:53:28.958
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:57:52.664
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 16:57:52.665
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:03:42.889
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:03:42.889
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:09:41.788
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:09:41.789
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:09:56.241
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:09:56.241
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:21:57.525
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:21:57.525
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:32:25.384
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-15 17:32:25.385
+!MESSAGE Targets: deploy, Mode: run
+!SESSION 2015-01-16 14:55:13.518 -----------------------------------------------
+eclipse.buildId=4.4.1.M20140925-0400
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-01-16 14:56:18.291
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-01-16 14:56:18.363
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\OA STEM'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-16 14:56:23.317
+!MESSAGE Installing tools if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-16 14:56:23.321
+!MESSAGE Installedtools
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-16 14:56:23.376
+!MESSAGE Installing java if necessary
+
+!ENTRY edu.wpi.first.wpilib.plugins.core 1 0 2015-01-16 14:56:23.379
+!MESSAGE Installedjava
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:03:21.091
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:03:21.092
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:05:48.629
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:05:48.630
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:06:36.987
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:06:36.988
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:08:28.924
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:08:28.927
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:09:27.447
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:09:27.448
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:10:56.385
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:10:56.387
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:12:13.400
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:12:13.401
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:21:21.541
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:21:21.542
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:22:58.640
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:22:58.642
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:25:36.911
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:25:36.913
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:26:56.648
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:26:56.650
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:27:32.729
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:27:32.730
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:30:33.449
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:30:33.450
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:33:57.489
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:33:57.490
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:34:52.362
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:34:52.364
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:35:55.224
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:35:55.225
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:46:35.341
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:46:35.342
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:53:31.876
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:53:31.879
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:55:09.518
+!MESSAGE Running ant file: C:\Users\OA STEM\Desktop\FRC\2015RoboRIO\Getting Started\build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2015-01-16 15:55:09.519
+!MESSAGE Targets: deploy, Mode: run
