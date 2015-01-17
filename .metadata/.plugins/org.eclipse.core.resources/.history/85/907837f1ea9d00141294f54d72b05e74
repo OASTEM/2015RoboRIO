@@ -9,8 +9,6 @@ package org.oastem.frc.roboRIOTest;
 
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-
 import org.oastem.frc.control.*;
 //import org.oastem.frc.Debug;
 import org.oastem.frc.sensor.*;
@@ -64,7 +62,7 @@ public class Robot extends SampleRobot {
     private final int SOL_REVERSE_BUTTON = 5;
     //*/
     
-    public void robotInit()
+    public Robot()
     {
         /*ds = DriveSystem.getInstance();
         ds.initializeDrive(LEFT_FRONT_DRIVE_PORT, LEFT_BACK_DRIVE_PORT, 
@@ -176,7 +174,15 @@ public class Robot extends SampleRobot {
                 System.out.println("OFF!");
                 //debug[1] = "solen OFF";
             }
+            /*
+            if (solen.get() == DoubleSolenoid.Value.kOff)
+            	System.out.println("Holy crap it's off");
             
+            if (solen.get() == DoubleSolenoid.Value.kForward)
+            	System.out.println("Heey Forwward");
+            
+            if (solen.get() == DoubleSolenoid.Value.kReverse)
+            	System.out.println("Back");*/
             //debug[1] = "Gyro: " + gyro.getAngle();
             //Debug.log(debug);
         }

@@ -177,6 +177,14 @@ public class Robot extends SampleRobot {
                 //debug[1] = "solen OFF";
             }
             
+            if (solen.get() == Value.kOff)
+            	System.out.println("Holy crap it's off");
+            
+            if (solen.get() == Value.kForward)
+            	System.out.println("Heey Forwward");
+            
+            if (solen.get() == Value.kReverse)
+            	System.out.println("Back");
             //debug[1] = "Gyro: " + gyro.getAngle();
             //Debug.log(debug);
         }
