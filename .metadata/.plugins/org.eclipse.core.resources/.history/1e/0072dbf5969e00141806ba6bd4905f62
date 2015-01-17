@@ -9,9 +9,25 @@ package org.oastem.frc.roboRIOTest;
 
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.smartdashboard.*;
+
 import org.oastem.frc.control.*;
 //import org.oastem.frc.Debug;
 import org.oastem.frc.sensor.*;
+
+/**
+ * NOTES DURING PRESENTATION
+ * 
+ * TECH HAS TO:
+ * 
+ * determine if a tote is on the pulley system or not
+ * be able to easily accelerate/deccelerate lifting mechanism
+ * 
+ * 
+ * ideas:
+ * check the voltage consumption of motors used
+ */
 
 
 /**
@@ -30,6 +46,8 @@ public class Robot extends SampleRobot {
     private Jaguar motor2;
     private Jaguar motor3;
     private Jaguar motor4;
+    
+    private SmartDashboard smart;
     
     //String[] debug = new String[6];
     
@@ -54,19 +72,22 @@ public class Robot extends SampleRobot {
     
     private final int GYRO_PORT = 1;
     
-    private final int SOLEN_FORWARD_CHANNEL = 0;  
-    private final int SOLEN_BACKWARD_CHANNEL = 1; 
+    private final int SOLEN_FORWARD_CHANNEL = 3;  
+    private final int SOLEN_BACKWARD_CHANNEL = 2;
+    private final int PCM_MODULE_NO = 62;
     
     private final int SOL_FORWARD_BUTTON = 4;
     private final int SOL_REVERSE_BUTTON = 5;
     //*/
     
-    public void robotInit(){
+    public void robotInit()
+    {
         /*ds = DriveSystem.getInstance();
         ds.initializeDrive(LEFT_FRONT_DRIVE_PORT, LEFT_BACK_DRIVE_PORT, 
                 RIGHT_FRONT_DRIVE_PORT, RIGHT_BACK_DRIVE_PORT);
         
         motor1 = new Jaguar(LEFT_FRONT_DRIVE_PORT);
+
         motor2 = new Jaguar(LEFT_BACK_DRIVE_PORT);
         motor3 = new Jaguar(RIGHT_FRONT_DRIVE_PORT);
         motor4 = new Jaguar(RIGHT_BACK_DRIVE_PORT);
@@ -74,6 +95,8 @@ public class Robot extends SampleRobot {
         js = new Joystick(JOYSTICK);
 
         motor1 = new Jaguar(ENC_JAG_PORT);
+        
+        smart = new SmartDashboard();
 
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
@@ -82,9 +105,7 @@ public class Robot extends SampleRobot {
         
         gyro = new ADW22307Gyro(GYRO_PORT);
         
-        comp = new Compressor(62);
-        //solen = new DoubleSolenoid(SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
-        
+        solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
         
         //Debug.clear();
         //Debug.log(1, 1, "Robot initialized.");
@@ -102,7 +123,9 @@ public class Robot extends SampleRobot {
         boolean motorStart = false;
         encoder.reset();
         //Debug.clear();
-        solen = new DoubleSolenoid(SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
+        //js = new Joystick(JOYSTICK);
+        //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
+        
         while(isEnabled() && isOperatorControl()){
         	
             //Debug.clear();
@@ -151,25 +174,42 @@ public class Robot extends SampleRobot {
             //also compare with getRaw()
             //*/
             
+            /*
+            if (js.getRawButton(SOL_FORWARD_BUTTON))
+            {
+                smart.putString("Piston", "Forward");
+            }
+            else if (js.getRawButton(SOL_REVERSE_BUTTON))
+            {
+                smart.putString("Piston", "Backward");
+            }
+            else
+            {
+                smart.putString("Piston", "Stable swag");
+            }*/
             
             
             if (js.getRawButton(SOL_FORWARD_BUTTON))
             {
                 solen.set(DoubleSolenoid.Value.kForward);
+                System.out.println("Forward!");
                 //debug[1] = "solen FORWARD";
             }
             else if (js.getRawButton(SOL_REVERSE_BUTTON))
             {
                 solen.set(DoubleSolenoid.Value.kReverse);
+                System.out.println("REVERSE!");
                 //debug[1] = "solen REVERSE";
             }
             else
             {
                 solen.set(DoubleSolenoid.Value.kOff);
+                System.out.println("OFF!");
                 //debug[1] = "solen OFF";
             }
             
-
+            
+            
             //debug[1] = "Gyro: " + gyro.getAngle();
             //Debug.log(debug);
         }

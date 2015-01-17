@@ -105,7 +105,7 @@ public class Robot extends SampleRobot {
         
         gyro = new ADW22307Gyro(GYRO_PORT);
         
-        solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
+        //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
         
         //Debug.clear();
         //Debug.log(1, 1, "Robot initialized.");
@@ -186,9 +186,9 @@ public class Robot extends SampleRobot {
             else
             {
                 smart.putString("Piston", "Stable swag");
-            }
+            }//*/
             
-            /**
+            /*
             if (js.getRawButton(SOL_FORWARD_BUTTON))
             {
                 solen.set(DoubleSolenoid.Value.kForward);
@@ -206,7 +206,7 @@ public class Robot extends SampleRobot {
                 solen.set(DoubleSolenoid.Value.kOff);
                 System.out.println("OFF!");
                 //debug[1] = "solen OFF";
-            }*/
+            }//*/
             
             
             
