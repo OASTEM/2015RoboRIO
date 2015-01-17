@@ -47,7 +47,7 @@ public class Robot extends SampleRobot {
     private Jaguar motor3;
     private Jaguar motor4;
     
-    private SmartDashboard smart;
+    private SmartDashboard dashboard;
     
     //String[] debug = new String[6];
     
@@ -59,9 +59,9 @@ public class Robot extends SampleRobot {
     private final int JOYSTICK = 0; 
     
     private final int WHEEL_CIRCUMFERENCE = 7;
-    private final int ENCODER_CH_A = 14;
-    private final int ENCODER_CH_B = 13;
-    private final int ENC_JAG_PORT = 2;
+    private final int ENCODER_CH_A = 0;
+    private final int ENCODER_CH_B = 1;
+    private final int ENC_JAG_PORT = 0;
 
     
     private QuadratureEncoder encoder;
@@ -96,11 +96,11 @@ public class Robot extends SampleRobot {
 
         motor1 = new Jaguar(ENC_JAG_PORT);
         
-        smart = new SmartDashboard();
+        dashboard = new SmartDashboard();
 
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
-        encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, true, 4, 479);
+        encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, 4, 479);
         encoder.setDistancePerPulse(WHEEL_CIRCUMFERENCE);
         
         gyro = new ADW22307Gyro(GYRO_PORT);
@@ -132,40 +132,34 @@ public class Robot extends SampleRobot {
             currentTime = System.currentTimeMillis();
             //debug[0] = "Drive Speed: " + js.getY();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
-            //motor1.set(js.getY());
+            motor1.set(js.getY());
             
-            /*
+            
             // OUTPUT
-            debug[1] = "Enc: " + encoder.get();
+            dashboard.putString("Enc: ", encoder.get() + "");
             
             
             
             // GET DIRECTION
             if (encoder.isGoingForward() == true)
-                debug[2] = "Going Forward";
+                dashboard.putString("Going Forward?", "Yes");
             else
-                debug[2] = "Going Backward";
+                dashboard.putString("Going Forward?", "No");
             //
             
             
             // get VS getRaw
-            debug[0] = "rawEnc: " + encoder.getRaw();
+            dashboard.putString("rawEnc: ", encoder.getRaw() + "");
             
             
             // distancePerPulse
             //ACTIVATE LINE AT TOP OF METHOD
-            debug[3] = "Distance: " + encoder.getDistance();
+            dashboard.putString("Distance: ", encoder.getDistance() + "");
             
             
             // getRate
-            debug[4] = "Rate: " + encoder.getRate();
+            dashboard.putString("Rate: ", encoder.getRate() + "");
             
-            // stopped
-            if (encoder.isStopped() == true)
-                debug[5] = "Encoder stopped";
-            else
-                debug[5] = "Encoder going";
-            //
             
             
             // encodingScale
@@ -174,18 +168,18 @@ public class Robot extends SampleRobot {
             //also compare with getRaw()
             //*/
             
-            
+            /*
             if (js.getRawButton(SOL_FORWARD_BUTTON))
             {
-                smart.putString("Piston", "Forward");
+                dashboard.putString("Piston", "Forward");
             }
             else if (js.getRawButton(SOL_REVERSE_BUTTON))
             {
-                smart.putString("Piston", "Backward");
+                dashboard.putString("Piston", "Backward");
             }
             else
             {
-                smart.putString("Piston", "Stable swag");
+                dashboard.putString("Piston", "Stable swag");
             }//*/
             
             /*
