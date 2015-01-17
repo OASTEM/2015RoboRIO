@@ -10,10 +10,24 @@ package org.oastem.frc.roboRIOTest;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 import org.oastem.frc.control.*;
 //import org.oastem.frc.Debug;
 import org.oastem.frc.sensor.*;
+
+/**
+ * NOTES DURING PRESENTATION
+ * 
+ * TECH HAS TO:
+ * 
+ * determine if a tote is on the pulley system or not
+ * be able to easily accelerate/deccelerate lifting mechanism
+ * 
+ * 
+ * ideas:
+ * check the voltage consumption of motors used
+ */
 
 
 /**
@@ -32,6 +46,8 @@ public class Robot extends SampleRobot {
     private Jaguar motor2;
     private Jaguar motor3;
     private Jaguar motor4;
+    
+    private SmartDashboard smart;
     
     //String[] debug = new String[6];
     
@@ -79,6 +95,8 @@ public class Robot extends SampleRobot {
         js = new Joystick(JOYSTICK);
 
         motor1 = new Jaguar(ENC_JAG_PORT);
+        
+        smart = new SmartDashboard();
 
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
@@ -157,7 +175,20 @@ public class Robot extends SampleRobot {
             //*/
             
             
+            if (js.getRawButton(SOL_FORWARD_BUTTON))
+            {
+                smart.putString("Piston", "Forward");
+            }
+            else if (js.getRawButton(SOL_REVERSE_BUTTON))
+            {
+                smart.putString("Piston", "Backward");
+            }
+            else
+            {
+                smart.putString("Piston", "Stable swag");
+            }
             
+            /**
             if (js.getRawButton(SOL_FORWARD_BUTTON))
             {
                 solen.set(DoubleSolenoid.Value.kForward);
@@ -175,7 +206,9 @@ public class Robot extends SampleRobot {
                 solen.set(DoubleSolenoid.Value.kOff);
                 System.out.println("OFF!");
                 //debug[1] = "solen OFF";
-            }
+            }*/
+            
+            
             
             //debug[1] = "Gyro: " + gyro.getAngle();
             //Debug.log(debug);
