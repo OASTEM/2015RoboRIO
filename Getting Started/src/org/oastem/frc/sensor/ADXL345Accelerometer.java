@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.I2C.Port;
  * Custom class built that encloses the Accelerometer class in order to 
  * accomodate for drifting/out of range values.
  * 
- * @author Kevin is homo --Aurik Sarker
+ * @author KTOmega
  */
 public class ADXL345Accelerometer {
     private ADXL345_I2C accel;
