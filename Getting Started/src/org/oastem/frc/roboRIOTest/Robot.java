@@ -100,7 +100,7 @@ public class Robot extends SampleRobot {
 
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
-        encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, 4, 479);
+        encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, true, 4, 479);
         encoder.setDistancePerPulse(WHEEL_CIRCUMFERENCE);
         
         gyro = new ADW22307Gyro(GYRO_PORT);
