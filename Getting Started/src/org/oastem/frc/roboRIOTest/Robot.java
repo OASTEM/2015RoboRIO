@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 import org.oastem.frc.control.*;
 //import org.oastem.frc.Debug;
 import org.oastem.frc.sensor.*;
+import org.oastem.frc.*;
 
 /**
  * NOTES DURING PRESENTATION
@@ -41,14 +42,14 @@ public class Robot extends SampleRobot {
     
     private DriveSystem ds;
     private Joystick js;
-    private PDP panel;
+    private PowerDistributionPanel panel;
     
     private Jaguar motor1;
     private Jaguar motor2;
     private Jaguar motor3;
     private Jaguar motor4;
     
-    private SmartDashboard dashboard;
+    private Dashboard dashboard;
     
     //String[] debug = new String[6];
     
@@ -81,6 +82,8 @@ public class Robot extends SampleRobot {
     private final int SOL_REVERSE_BUTTON = 5;
     //*/
     
+    CameraServer server;
+    
     public void robotInit()
     {
         /*ds = DriveSystem.getInstance();
@@ -94,12 +97,19 @@ public class Robot extends SampleRobot {
         motor4 = new Jaguar(RIGHT_BACK_DRIVE_PORT);
         */
         js = new Joystick(JOYSTICK);
-        panel = new PDP();
+        panel = new PowerDistributionPanel();
+        
 
         motor1 = new Jaguar(ENC_JAG_PORT);
         
         dashboard = new Dashboard();
 
+        /*
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture();
+        //*/
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
         encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, true, 4, 479);
@@ -124,6 +134,7 @@ public class Robot extends SampleRobot {
         long startTime = 0;
         boolean motorStart = false;
         encoder.reset();
+        panel.clearStickyFaults();
         //Debug.clear();
         //js = new Joystick(JOYSTICK);
         //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
@@ -136,14 +147,16 @@ public class Robot extends SampleRobot {
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
             motor1.set(js.getY());
             
-            
             // OUTPUT
+            
             dashboard.putNumber("Enc: ", encoder.get());
-            dashboard.putNumber("Current", panel.getCurrent(0));
-            dashboard.putNumber("Voltage", panel.getVoltage());
-            dashboard.putNumber("Amps", panel.getTotalCurrent());
+            dashboard.putNumber("Temp: ", panel.getTemperature());
+            dashboard.putNumber("Total current: ", panel.getTotalCurrent());
+            dashboard.putNumber("Total power: ", panel.getTotalPower());
+            dashboard.putNumber("Voltage: ", panel.getVoltage());
             
-            
+            dashboard.putData("PDP: ", panel);
+            System.out.println(panel.getCurrent(3));
             
             // GET DIRECTION
             if (encoder.isGoingForward() == true)
