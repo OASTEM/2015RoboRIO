@@ -41,6 +41,7 @@ public class Robot extends SampleRobot {
     
     private DriveSystem ds;
     private Joystick js;
+    private PDP panel;
     
     private Jaguar motor1;
     private Jaguar motor2;
@@ -93,10 +94,11 @@ public class Robot extends SampleRobot {
         motor4 = new Jaguar(RIGHT_BACK_DRIVE_PORT);
         */
         js = new Joystick(JOYSTICK);
+        panel = new PDP();
 
         motor1 = new Jaguar(ENC_JAG_PORT);
         
-        dashboard = new SmartDashboard();
+        dashboard = new Dashboard();
 
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
@@ -136,7 +138,10 @@ public class Robot extends SampleRobot {
             
             
             // OUTPUT
-            dashboard.putString("Enc: ", encoder.get() + "");
+            dashboard.putNumber("Enc: ", encoder.get());
+            dashboard.putNumber("Current", panel.getCurrent(0));
+            dashboard.putNumber("Voltage", panel.getVoltage());
+            dashboard.putNumber("Amps", panel.getTotalCurrent());
             
             
             
