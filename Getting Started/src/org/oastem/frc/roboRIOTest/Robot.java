@@ -11,6 +11,7 @@ package org.oastem.frc.roboRIOTest;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 import org.oastem.frc.control.*;
 //import org.oastem.frc.Debug;
@@ -104,12 +105,14 @@ public class Robot extends SampleRobot {
         
         dashboard = new Dashboard();
 
-        /*
+        
         server = CameraServer.getInstance();
         server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
-        server.startAutomaticCapture();
+        server.startAutomaticCapture(new USBCamera("cam0"));
         //*/
+        
+        
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
         encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, true, 4, 479);
