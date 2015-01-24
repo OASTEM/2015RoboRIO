@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 import org.oastem.frc.control.*;
 //import org.oastem.frc.Debug;
 import org.oastem.frc.sensor.*;
+import org.oastem.frc.*;
 
 /**
  * NOTES DURING PRESENTATION
@@ -41,14 +42,14 @@ public class Robot extends SampleRobot {
     
     private DriveSystem ds;
     private Joystick js;
-    private PDP panel;
+    private PowerDistributionPanel panel;
     
     private Jaguar motor1;
     private Jaguar motor2;
     private Jaguar motor3;
     private Jaguar motor4;
     
-    private SmartDashboard dashboard;
+    private Dashboard dashboard;
     
     //String[] debug = new String[6];
     
@@ -94,7 +95,7 @@ public class Robot extends SampleRobot {
         motor4 = new Jaguar(RIGHT_BACK_DRIVE_PORT);
         */
         js = new Joystick(JOYSTICK);
-        panel = new PDP();
+        panel = new PowerDistributionPanel();
 
         motor1 = new Jaguar(ENC_JAG_PORT);
         
@@ -139,9 +140,11 @@ public class Robot extends SampleRobot {
             
             // OUTPUT
             dashboard.putNumber("Enc: ", encoder.get());
-            dashboard.putNumber("Current", panel.getCurrent(0));
+            dashboard.putNumber("Current", panel.getCurrent(3));
             dashboard.putNumber("Voltage", panel.getVoltage());
             dashboard.putNumber("Amps", panel.getTotalCurrent());
+            
+            dashboard.putData("PDP: ", panel);
             
             
             
