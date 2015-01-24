@@ -8,7 +8,7 @@ import org.bytedeco.javacv.FrameGrabber.Exception;
 import static org.bytedeco.javacpp.opencv_core.*;
 import static org.bytedeco.javacpp.opencv_imgproc.*;
 
-public class ImageProcessor {
+public class ImageProcessing {
 	private OpenCVFrameGrabber grabber;
 	private IplImage grabbedImage;
 	public void checkWebcam() {
@@ -21,7 +21,7 @@ public class ImageProcessor {
 		}
 	}
 	
-	public ImageProcessor(OpenCVFrameGrabber grabber) {
+	public ImageProcessing(OpenCVFrameGrabber grabber) {
 		this.grabber = grabber;
 	}
 }
