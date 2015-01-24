@@ -11,6 +11,7 @@ package org.oastem.frc.roboRIOTest;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 import org.oastem.frc.control.*;
 //import org.oastem.frc.Debug;
@@ -82,6 +83,8 @@ public class Robot extends SampleRobot {
     private final int SOL_REVERSE_BUTTON = 5;
     //*/
     
+    CameraServer server;
+    
     public void robotInit()
     {
         /*ds = DriveSystem.getInstance();
@@ -101,6 +104,14 @@ public class Robot extends SampleRobot {
         
         dashboard = new Dashboard();
 
+        
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture(new USBCamera("cam0"));
+        //*/
+        
+        
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
         encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, true, 4, 479);
@@ -125,6 +136,7 @@ public class Robot extends SampleRobot {
         long startTime = 0;
         boolean motorStart = false;
         encoder.reset();
+        panel.clearStickyFaults();
         //Debug.clear();
         //js = new Joystick(JOYSTICK);
         //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
@@ -137,16 +149,12 @@ public class Robot extends SampleRobot {
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
             motor1.set(js.getY());
             
-            
             // OUTPUT
-            dashboard.putNumber("Enc: ", encoder.get());
-            dashboard.putNumber("Current", panel.getCurrent(3));
-            dashboard.putNumber("Voltage", panel.getVoltage());
-            dashboard.putNumber("Amps", panel.getTotalCurrent());
+            
+            dashboard.putNumber("Enc: ", encoder.get());            
+            dashboard.putNumber("Total power: ", panel.getTotalPower());
             
             dashboard.putData("PDP: ", panel);
-            
-            
             
             // GET DIRECTION
             if (encoder.isGoingForward() == true)
