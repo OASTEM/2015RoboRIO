@@ -1,12 +1,12 @@
 package org.oastem.frc.sensor;
 
-import org.bytedeco.javacpp.Loader;
-import org.bytedeco.javacpp.opencv_objdetect;
+//import org.bytedeco.javacpp.Loader;
+//import org.bytedeco.javacpp.opencv_objdetect;
 import org.bytedeco.javacv.*;
 import org.bytedeco.javacv.FrameGrabber.Exception;
 
 import static org.bytedeco.javacpp.opencv_core.*;
-import static org.bytedeco.javacpp.opencv_imgproc.*;
+//import static org.bytedeco.javacpp.opencv_imgproc.*;
 
 public class ImageProcessing {
 	private OpenCVFrameGrabber grabber;
@@ -21,8 +21,8 @@ public class ImageProcessing {
 		}
 	}
 	
-	public ImageProcessing(OpenCVFrameGrabber grabber) {
-		this.grabber = grabber;
+	public ImageProcessing() {
+		grabber = new OpenCVFrameGrabber("");
 	}
 }
 

@@ -84,6 +84,7 @@ public class Robot extends SampleRobot {
     //*/
     
     CameraServer server;
+    ImageProcessing cam;
     
     public void robotInit()
     {
@@ -105,12 +106,12 @@ public class Robot extends SampleRobot {
         dashboard = new Dashboard();
 
         
-        server = CameraServer.getInstance();
+        /*server = CameraServer.getInstance();
         server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
         server.startAutomaticCapture(new USBCamera("cam0"));
         //*/
-        
+        cam = new ImageProcessing();
         
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
@@ -176,7 +177,7 @@ public class Robot extends SampleRobot {
             // getRate
             dashboard.putString("Rate: ", encoder.getRate() + "");
             
-            
+            cam.checkWebcam();
             
             // encodingScale
             //ACTIVATE LINE AT INIT
