@@ -45,7 +45,7 @@ public class Robot extends SampleRobot {
     private Joystick js;
     private PowerDistributionPanel panel;
     
-    private Jaguar motor1;
+    private CANJaguar motor1;
     private Jaguar motor2;
     private Jaguar motor3;
     private Jaguar motor4;
@@ -64,7 +64,8 @@ public class Robot extends SampleRobot {
     private final int WHEEL_CIRCUMFERENCE = 7;
     private final int ENCODER_CH_A = 0;
     private final int ENCODER_CH_B = 1;
-    private final int ENC_JAG_PORT = 0;
+    private final int ENC_JAG_CAN_ID = 3;
+    private final int pulsesPerRev = 497;
 
     
     private QuadratureEncoder encoder;
@@ -83,8 +84,6 @@ public class Robot extends SampleRobot {
     private final int SOL_REVERSE_BUTTON = 5;
     //*/
     
-    CameraServer server;
-    ImageProcessing cam;
     
     public void robotInit()
     {
@@ -101,7 +100,7 @@ public class Robot extends SampleRobot {
         js = new Joystick(JOYSTICK);
         panel = new PowerDistributionPanel();
 
-        motor1 = new Jaguar(ENC_JAG_PORT);
+        motor1 = new CANJaguar(ENC_JAG_CAN_ID);
         
         dashboard = new Dashboard();
 
@@ -111,7 +110,6 @@ public class Robot extends SampleRobot {
         //the camera name (ex "cam0") can be found through the roborio web interface
         server.startAutomaticCapture(new USBCamera("cam0"));
         //*/
-        cam = new ImageProcessing();
         
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
@@ -135,9 +133,13 @@ public class Robot extends SampleRobot {
     public void operatorControl() {
         long currentTime;
         long startTime = 0;
+        int position = 0;
         boolean motorStart = false;
+        boolean canPress = false;
         encoder.reset();
         panel.clearStickyFaults();
+        motor1.setPositionMode(CANJaguar.kQuadEncoder, pulsesPerRev, 1, 0, 0);
+        motor1.enableControl();
         //Debug.clear();
         //js = new Joystick(JOYSTICK);
         //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
@@ -148,7 +150,17 @@ public class Robot extends SampleRobot {
             currentTime = System.currentTimeMillis();
             //debug[0] = "Drive Speed: " + js.getY();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
-            motor1.set(js.getY());
+            //motor1.set(position);
+            if (js.getRawButton(11) && canPress)
+            {
+            	motor1.set(4);
+            	canPress = false;
+            }
+            else if (!js.getRawButton(11))
+            	canPress = true;
+            
+            System.out.println(position);
+            
             
             // OUTPUT
             
@@ -177,7 +189,6 @@ public class Robot extends SampleRobot {
             // getRate
             dashboard.putString("Rate: ", encoder.getRate() + "");
             
-            cam.checkWebcam();
             
             // encodingScale
             //ACTIVATE LINE AT INIT

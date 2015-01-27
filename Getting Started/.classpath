@@ -43,5 +43,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/videoinput.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/NetworkTables.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/WPILib.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
