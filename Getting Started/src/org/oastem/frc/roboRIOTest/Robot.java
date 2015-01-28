@@ -133,13 +133,15 @@ public class Robot extends SampleRobot {
     public void operatorControl() {
         long currentTime;
         long startTime = 0;
-        int position = 0;
+        double position = 0;
         boolean motorStart = false;
         boolean canPress = false;
         encoder.reset();
         panel.clearStickyFaults();
-        motor1.setPositionMode(CANJaguar.kQuadEncoder, pulsesPerRev, 1, 0, 0);
+        motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, 1f, -.04f, 0.02f);
         motor1.enableControl();
+        position = motor1.getPosition() + 4.0;
+        motor1.set(position);
         //Debug.clear();
         //js = new Joystick(JOYSTICK);
         //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
@@ -153,14 +155,15 @@ public class Robot extends SampleRobot {
             //motor1.set(position);
             if (js.getRawButton(11) && canPress)
             {
-            	motor1.set(4);
+            	position = motor1.getPosition() - 4.0f;
             	canPress = false;
             }
             else if (!js.getRawButton(11))
             	canPress = true;
             
-            System.out.println(position);
-            
+            dashboard.putData("Enc Jag:", motor1);
+            dashboard.putNumber("Jag Position: ", motor1.getPosition());
+            dashboard.putNumber("Position var", position);
             
             // OUTPUT
             
