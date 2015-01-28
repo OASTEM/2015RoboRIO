@@ -11,6 +11,7 @@ package org.oastem.frc.roboRIOTest;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 import org.oastem.frc.control.*;
 //import org.oastem.frc.Debug;
@@ -44,7 +45,7 @@ public class Robot extends SampleRobot {
     private Joystick js;
     private PowerDistributionPanel panel;
     
-    private Jaguar motor1;
+    private CANJaguar motor1;
     private Jaguar motor2;
     private Jaguar motor3;
     private Jaguar motor4;
@@ -63,7 +64,8 @@ public class Robot extends SampleRobot {
     private final int WHEEL_CIRCUMFERENCE = 7;
     private final int ENCODER_CH_A = 0;
     private final int ENCODER_CH_B = 1;
-    private final int ENC_JAG_PORT = 0;
+    private final int ENC_JAG_CAN_ID = 3;
+    private final int pulsesPerRev = 497;
 
     
     private QuadratureEncoder encoder;
@@ -82,6 +84,7 @@ public class Robot extends SampleRobot {
     private final int SOL_REVERSE_BUTTON = 5;
     //*/
     
+    
     public void robotInit()
     {
         /*ds = DriveSystem.getInstance();
@@ -97,10 +100,17 @@ public class Robot extends SampleRobot {
         js = new Joystick(JOYSTICK);
         panel = new PowerDistributionPanel();
 
-        motor1 = new Jaguar(ENC_JAG_PORT);
+        motor1 = new CANJaguar(ENC_JAG_CAN_ID);
         
         dashboard = new Dashboard();
 
+        
+        /*server = CameraServer.getInstance();
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture(new USBCamera("cam0"));
+        //*/
+        
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
         encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, true, 4, 479);
@@ -123,8 +133,15 @@ public class Robot extends SampleRobot {
     public void operatorControl() {
         long currentTime;
         long startTime = 0;
+        double position = 0;
         boolean motorStart = false;
+        boolean canPress = false;
         encoder.reset();
+        panel.clearStickyFaults();
+        motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, 1f, -.04f, 0.02f);
+        motor1.enableControl();
+        position = motor1.getPosition() + 4.0;
+        motor1.set(position);
         //Debug.clear();
         //js = new Joystick(JOYSTICK);
         //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
@@ -135,18 +152,25 @@ public class Robot extends SampleRobot {
             currentTime = System.currentTimeMillis();
             //debug[0] = "Drive Speed: " + js.getY();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
-            motor1.set(js.getY());
+            //motor1.set(position);
+            if (js.getRawButton(11) && canPress)
+            {
+            	position = motor1.getPosition() - 4.0f;
+            	canPress = false;
+            }
+            else if (!js.getRawButton(11))
+            	canPress = true;
             
+            dashboard.putData("Enc Jag:", motor1);
+            dashboard.putNumber("Jag Position: ", motor1.getPosition());
+            dashboard.putNumber("Position var", position);
             
             // OUTPUT
-            dashboard.putNumber("Enc: ", encoder.get());
-            dashboard.putNumber("Current", panel.getCurrent(3));
-            dashboard.putNumber("Voltage", panel.getVoltage());
-            dashboard.putNumber("Amps", panel.getTotalCurrent());
+            
+            dashboard.putNumber("Enc: ", encoder.get());            
+            dashboard.putNumber("Total power: ", panel.getTotalPower());
             
             dashboard.putData("PDP: ", panel);
-            
-            
             
             // GET DIRECTION
             if (encoder.isGoingForward() == true)
@@ -167,7 +191,6 @@ public class Robot extends SampleRobot {
             
             // getRate
             dashboard.putString("Rate: ", encoder.getRate() + "");
-            
             
             
             // encodingScale

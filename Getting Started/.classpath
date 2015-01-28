@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="var" path="wpilib" sourcepath="wpilib.sources"/>
-	<classpathentry exported="true" kind="var" path="networktables" sourcepath="networktables.sources"/>
+	<classpathentry kind="src" path="lib"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry exported="true" kind="lib" path="build/jars/NetworkTables.jar"/>
-	<classpathentry exported="true" kind="lib" path="build/jars/WPILib.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/artoolkitplus-linux-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/artoolkitplus-linux-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/artoolkitplus-windows-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/artoolkitplus-windows-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/artoolkitplus.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ffmpeg-linux-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ffmpeg-linux-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ffmpeg-windows-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ffmpeg-windows-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ffmpeg.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flandmark-linux-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flandmark-linux-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flandmark-windows-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flandmark-windows-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flandmark.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flycapture-linux-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flycapture-linux-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flycapture-windows-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flycapture-windows-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/flycapture.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/javacpp.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/javacv.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/libdc1394-linux-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/libdc1394-linux-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/libdc1394.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/libfreenect-linux-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/libfreenect-linux-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/libfreenect-windows-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/libfreenect-windows-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/libfreenect.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/opencv-linux-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/opencv-linux-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/opencv-windows-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/opencv-windows-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/opencv.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/videoinput-windows-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/videoinput-windows-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/videoinput.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/NetworkTables.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/WPILib.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
