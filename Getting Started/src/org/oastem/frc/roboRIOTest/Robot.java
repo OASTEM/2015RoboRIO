@@ -50,9 +50,9 @@ public class Robot extends SampleRobot {
     private Jaguar motor3;
     private Jaguar motor4;
     
-    private Dashboard dashboard;
+    private Accelerator accel;
     
-    //String[] debug = new String[6];
+    private Dashboard dashboard;
     
     private final int LEFT_FRONT_DRIVE_PORT = 1;
     private final int LEFT_BACK_DRIVE_PORT = 2;
@@ -102,6 +102,8 @@ public class Robot extends SampleRobot {
 
         motor1 = new CANJaguar(ENC_JAG_CAN_ID);
         
+        accel = new Accelerator();
+        
         dashboard = new Dashboard();
 
         
@@ -111,17 +113,15 @@ public class Robot extends SampleRobot {
         server.startAutomaticCapture(new USBCamera("cam0"));
         //*/
         
-        
+        /*
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
         encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, true, 4, 479);
         encoder.setDistancePerPulse(WHEEL_CIRCUMFERENCE);
         
         gyro = new ADW22307Gyro(GYRO_PORT);
-        
+        //*/
         //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
         
-        //Debug.clear();
-        //Debug.log(1, 1, "Robot initialized.");
     }
     
     
@@ -136,107 +136,77 @@ public class Robot extends SampleRobot {
         double position = 0;
         boolean motorStart = false;
         boolean canPress = false;
-        encoder.reset();
         panel.clearStickyFaults();
-        motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, 1f, -.04f, 0.02f);
+        //motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, -1000, -.002, 1000);
+        //increasing (decreasing) Integral will increase the distance traveled but lessen error
+        motor1.setSpeedMode(CANJaguar.kQuadEncoder, 497, 1, 1, 1);
         motor1.enableControl();
-        position = motor1.getPosition() + 4.0;
-        motor1.set(position);
-        //Debug.clear();
-        //js = new Joystick(JOYSTICK);
-        //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
+        //position = motor1.getPosition() + 10.0;
+        //motor1.set(position);
+        //dashboard.putNumber("Original Position", motor1.getPosition());
         
         while(isEnabled() && isOperatorControl()){
-        	
-            //Debug.clear();
+        	motor1.set(2);
             currentTime = System.currentTimeMillis();
-            //debug[0] = "Drive Speed: " + js.getY();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
             //motor1.set(position);
+            
+            dashboard.putData("ENC_JAG: ", motor1);
+            dashboard.putNumber("Rate: ", motor1.getSpeed());
+            System.out.println(motor1.getSpeed());
+            dashboard.putNumber("Position var: ", position);
+            
             if (js.getRawButton(11) && canPress)
             {
-            	position = motor1.getPosition() - 4.0f;
+            	position += 2;
             	canPress = false;
             }
-            else if (!js.getRawButton(11))
+            else if (js.getRawButton(10) && canPress)
+            {
+            	position -= 2;
+            	canPress = false;
+            }
+            if (!js.getRawButton(11) && !js.getRawButton(10))
             	canPress = true;
-            
+            /*
             dashboard.putData("Enc Jag:", motor1);
             dashboard.putNumber("Jag Position: ", motor1.getPosition());
             dashboard.putNumber("Position var", position);
-            
+            dashboard.putNumber("Current Position:", motor1.getPosition());
+            System.out.println(motor1.getPosition());
+            */
             // OUTPUT
-            
-            dashboard.putNumber("Enc: ", encoder.get());            
+                        
             dashboard.putNumber("Total power: ", panel.getTotalPower());
             
             dashboard.putData("PDP: ", panel);
             
-            // GET DIRECTION
-            if (encoder.isGoingForward() == true)
-                dashboard.putString("Going Forward?", "Yes");
-            else
-                dashboard.putString("Going Forward?", "No");
-            //
-            
-            
-            // get VS getRaw
-            dashboard.putString("rawEnc: ", encoder.getRaw() + "");
-            
-            
-            // distancePerPulse
-            //ACTIVATE LINE AT TOP OF METHOD
-            dashboard.putString("Distance: ", encoder.getDistance() + "");
-            
-            
-            // getRate
-            dashboard.putString("Rate: ", encoder.getRate() + "");
-            
-            
-            // encodingScale
-            //ACTIVATE LINE AT INIT
-            //look at how enc.get() is different
-            //also compare with getRaw()
-            //*/
             
             /*
-            if (js.getRawButton(SOL_FORWARD_BUTTON))
-            {
-                dashboard.putString("Piston", "Forward");
-            }
-            else if (js.getRawButton(SOL_REVERSE_BUTTON))
-            {
-                dashboard.putString("Piston", "Backward");
-            }
-            else
-            {
-                dashboard.putString("Piston", "Stable swag");
-            }//*/
+            // ACCELERATION!!!
+            // Set to percentMode()
+            motor1.set(accel.accelerateValue(js.getY()));
+            dashboard.putNumber("Acceleration currSpeed: ", accel.getSpeed());
+            //*/
+            
             
             /*
             if (js.getRawButton(SOL_FORWARD_BUTTON))
             {
                 solen.set(DoubleSolenoid.Value.kForward);
-                System.out.println("Forward!");
-                //debug[1] = "solen FORWARD";
+                dashboard.putString("Piston", "Forward!");
             }
             else if (js.getRawButton(SOL_REVERSE_BUTTON))
             {
                 solen.set(DoubleSolenoid.Value.kReverse);
-                System.out.println("REVERSE!");
-                //debug[1] = "solen REVERSE";
+                dashboard.putString("Piston", "REVERSE!");
             }
             else
             {
                 solen.set(DoubleSolenoid.Value.kOff);
-                System.out.println("OFF!");
-                //debug[1] = "solen OFF";
+                dashboard.putString("Piston", "OFF!");
             }//*/
             
-            
-            
-            //debug[1] = "Gyro: " + gyro.getAngle();
-            //Debug.log(debug);
         }
     }
     
