@@ -44,6 +44,7 @@ public class Robot extends SampleRobot {
     private DriveSystem ds;
     private Joystick js;
     private PowerDistributionPanel panel;
+    private RobotState robostate;
     
     private CANJaguar motor1;
     private Jaguar motor2;
@@ -66,7 +67,9 @@ public class Robot extends SampleRobot {
     private final int ENCODER_CH_B = 1;
     private final int ENC_JAG_CAN_ID = 3;
     private final int pulsesPerRev = 497;
-
+    
+    private String state;
+    private boolean enabled;
     
     private QuadratureEncoder encoder;
     private ADW22307Gyro gyro;
@@ -105,7 +108,8 @@ public class Robot extends SampleRobot {
         accel = new Accelerator();
         
         dashboard = new Dashboard();
-
+        
+        robostate = new RobotState();
         
         /*server = CameraServer.getInstance();
         server.setQuality(50);
@@ -151,6 +155,24 @@ public class Robot extends SampleRobot {
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
             //motor1.set(position);
             
+            if (robostate.isAutonomous()){
+            	state = "Autonomous";
+            }
+            if (robostate.isDisabled()){
+            	enabled = false;
+            }
+            if (robostate.isEnabled()){
+            	enabled = true;
+            }
+            if (robostate.isOperatorControl()){
+            	state = "Operator Control";
+            }
+            if (robostate.isTest()){
+            	state = "Testing";
+            }
+            
+            dashboard.putString("Robot State: ", state);
+            dashboard.putBoolean("Robot Enabled?: ", enabled);
             dashboard.putData("ENC_JAG: ", motor1);
             dashboard.putNumber("Rate: ", motor1.getSpeed());
             System.out.println(motor1.getSpeed());
