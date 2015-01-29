@@ -50,6 +50,8 @@ public class Robot extends SampleRobot {
     private Jaguar motor3;
     private Jaguar motor4;
     
+    private Accelerator accel;
+    
     private Dashboard dashboard;
     
     private final int LEFT_FRONT_DRIVE_PORT = 1;
@@ -100,6 +102,8 @@ public class Robot extends SampleRobot {
 
         motor1 = new CANJaguar(ENC_JAG_CAN_ID);
         
+        accel = new Accelerator();
+        
         dashboard = new Dashboard();
 
         
@@ -147,7 +151,10 @@ public class Robot extends SampleRobot {
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
             //motor1.set(position);
             
+            dashboard.putData("ENC_JAG: ", motor1);
             dashboard.putNumber("Rate: ", motor1.getSpeed());
+            System.out.println(motor1.getSpeed());
+            dashboard.putNumber("Position var: ", position);
             
             if (js.getRawButton(11) && canPress)
             {
@@ -175,6 +182,12 @@ public class Robot extends SampleRobot {
             dashboard.putData("PDP: ", panel);
             
             
+            /*
+            // ACCELERATION!!!
+            // Set to percentMode()
+            motor1.set(accel.accelerateValue(js.getY()));
+            dashboard.putNumber("Acceleration currSpeed: ", accel.getSpeed());
+            //*/
             
             
             /*
