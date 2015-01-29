@@ -139,14 +139,16 @@ public class Robot extends SampleRobot {
         panel.clearStickyFaults();
         //motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, -1000, -.002, 1000);
         //increasing (decreasing) Integral will increase the distance traveled but lessen error
-        motor1.setSpeedMode(CANJaguar.kQuadEncoder, 497, 1, 1, 1);
+        motor1.setSpeedMode(CANJaguar.kQuadEncoder, 497, 1000, .002, 1);
+        //motor1.setPercentMode();
         motor1.enableControl();
+        motor1.set(1);
         //position = motor1.getPosition() + 10.0;
         //motor1.set(position);
         //dashboard.putNumber("Original Position", motor1.getPosition());
         
         while(isEnabled() && isOperatorControl()){
-        	motor1.set(2);
+        	//motor1.set(1);
             currentTime = System.currentTimeMillis();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
             //motor1.set(position);
@@ -186,6 +188,7 @@ public class Robot extends SampleRobot {
             // ACCELERATION!!!
             // Set to percentMode()
             motor1.set(accel.accelerateValue(js.getY()));
+            //motor1.set(js.getY());
             dashboard.putNumber("Acceleration currSpeed: ", accel.getSpeed());
             //*/
             
