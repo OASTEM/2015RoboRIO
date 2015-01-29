@@ -138,33 +138,46 @@ public class Robot extends SampleRobot {
         boolean canPress = false;
         encoder.reset();
         panel.clearStickyFaults();
-        motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, 1f, -.04f, 0.02f);
+        //motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, -1000, -.002, 1000);
+        //increasing (decreasing) Integral will increase the distance traveled but lessen error
+        motor1.setSpeedMode(CANJaguar.kQuadEncoder, 497, 1, 1, 1);
         motor1.enableControl();
-        position = motor1.getPosition() + 4.0;
-        motor1.set(position);
+        //position = motor1.getPosition() + 10.0;
+        //motor1.set(position);
         //Debug.clear();
         //js = new Joystick(JOYSTICK);
         //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
+        //dashboard.putNumber("Original Position", motor1.getPosition());
         
         while(isEnabled() && isOperatorControl()){
-        	
+        	motor1.set(2);
             //Debug.clear();
             currentTime = System.currentTimeMillis();
             //debug[0] = "Drive Speed: " + js.getY();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
             //motor1.set(position);
+            
+            dashboard.putNumber("Rate: ", motor1.getSpeed());
+            
             if (js.getRawButton(11) && canPress)
             {
-            	position = motor1.getPosition() - 4.0f;
+            	position += 2;
             	canPress = false;
             }
-            else if (!js.getRawButton(11))
+            else if (js.getRawButton(10) && canPress)
+            {
+            	position -= 2;
+            	canPress = false;
+            }
+            if (!js.getRawButton(11) && !js.getRawButton(10))
             	canPress = true;
-            
+            /*
             dashboard.putData("Enc Jag:", motor1);
             dashboard.putNumber("Jag Position: ", motor1.getPosition());
             dashboard.putNumber("Position var", position);
-            
+            dashboard.putNumber("Current Position:", motor1.getPosition());
+            System.out.println(motor1.getPosition());
+            */
             // OUTPUT
             
             dashboard.putNumber("Enc: ", encoder.get());            
