@@ -18,18 +18,6 @@ import org.oastem.frc.control.*;
 import org.oastem.frc.sensor.*;
 import org.oastem.frc.*;
 
-/**
- * NOTES DURING PRESENTATION
- * 
- * TECH HAS TO:
- * 
- * determine if a tote is on the pulley system or not
- * be able to easily accelerate/deccelerate lifting mechanism
- * 
- * 
- * ideas:
- * check the voltage consumption of motors used
- */
 
 
 /**
@@ -67,6 +55,7 @@ public class Robot extends SampleRobot {
     private final int ENCODER_CH_B = 1;
     private final int ENC_JAG_CAN_ID = 3;
     private final int pulsesPerRev = 497;
+    private final double goalRate = 10;
     
     private String state;
     private boolean enabled;
@@ -104,6 +93,7 @@ public class Robot extends SampleRobot {
         panel = new PowerDistributionPanel();
 
         motor1 = new CANJaguar(ENC_JAG_CAN_ID);
+        motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, -1000, -.002, 1000);
         
         accel = new Accelerator();
         
@@ -111,21 +101,26 @@ public class Robot extends SampleRobot {
         
         robostate = new RobotState();
         
+        enabled = true;
         /*server = CameraServer.getInstance();
         server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
         server.startAutomaticCapture(new USBCamera("cam0"));
         //*/
         
-        /*
-        //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
-        encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, true, 4, 479);
-        encoder.setDistancePerPulse(WHEEL_CIRCUMFERENCE);
         
+        //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
+        encoder = new QuadratureEncoder(ENCODER_CH_A, ENCODER_CH_B, false, 4, 497);
+        //encoder.setDistancePerPulse(WHEEL_CIRCUMFERENCE);
+        /*
         gyro = new ADW22307Gyro(GYRO_PORT);
         //*/
         //solen = new DoubleSolenoid(PCM_MODULE_NO, SOLEN_FORWARD_CHANNEL, SOLEN_BACKWARD_CHANNEL);
         
+    }
+    
+    public void autonomous(){
+    	dashboard.putString("Robot State: ", "Autonomous");
     }
     
     
@@ -138,47 +133,25 @@ public class Robot extends SampleRobot {
         long currentTime;
         long startTime = 0;
         double position = 0;
+        double power = 0.0;
         boolean motorStart = false;
         boolean canPress = false;
         panel.clearStickyFaults();
-        //motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, -1000, -.002, 1000);
-        //increasing (decreasing) Integral will increase the distance traveled but lessen error
-        motor1.setSpeedMode(CANJaguar.kQuadEncoder, 497, 1000, .002, 1);
-        //motor1.setPercentMode();
-        motor1.enableControl();
-        motor1.set(1);
-        //position = motor1.getPosition() + 10.0;
-        //motor1.set(position);
-        //dashboard.putNumber("Original Position", motor1.getPosition());
+        
+        motor1.enableControl(0);
+
         
         while(isEnabled() && isOperatorControl()){
-        	//motor1.set(1);
             currentTime = System.currentTimeMillis();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
-            //motor1.set(position);
-            
-            if (robostate.isAutonomous()){
-            	state = "Autonomous";
-            }
-            if (robostate.isDisabled()){
-            	enabled = false;
-            }
-            if (robostate.isEnabled()){
-            	enabled = true;
-            }
-            if (robostate.isOperatorControl()){
-            	state = "Operator Control";
-            }
-            if (robostate.isTest()){
-            	state = "Testing";
-            }
+            motor1.set(position);
+            state = "Operator Control";
             
             dashboard.putString("Robot State: ", state);
             dashboard.putBoolean("Robot Enabled?: ", enabled);
             dashboard.putData("ENC_JAG: ", motor1);
-            dashboard.putNumber("Rate: ", motor1.getSpeed());
-            System.out.println(motor1.getSpeed());
             dashboard.putNumber("Position var: ", position);
+            dashboard.putNumber("Jag Position: ", motor1.getPosition());
             
             if (js.getRawButton(11) && canPress)
             {
@@ -192,27 +165,15 @@ public class Robot extends SampleRobot {
             }
             if (!js.getRawButton(11) && !js.getRawButton(10))
             	canPress = true;
-            /*
-            dashboard.putData("Enc Jag:", motor1);
-            dashboard.putNumber("Jag Position: ", motor1.getPosition());
-            dashboard.putNumber("Position var", position);
-            dashboard.putNumber("Current Position:", motor1.getPosition());
-            System.out.println(motor1.getPosition());
-            */
-            // OUTPUT
+            
                         
             dashboard.putNumber("Total power: ", panel.getTotalPower());
             
             dashboard.putData("PDP: ", panel);
             
             
-            /*
-            // ACCELERATION!!!
-            // Set to percentMode()
-            motor1.set(accel.accelerateValue(js.getY()));
-            //motor1.set(js.getY());
-            dashboard.putNumber("Acceleration currSpeed: ", accel.getSpeed());
-            //*/
+            
+            
             
             
             /*
@@ -239,7 +200,7 @@ public class Robot extends SampleRobot {
      * This function is called once each time the robot enters test mode.
      */
     public void test() {
-    
+    	dashboard.putString("Robot State: ", "Testing");
     }
     
     public void disabled()
