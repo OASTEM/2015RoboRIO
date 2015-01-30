@@ -166,6 +166,7 @@ public class Robot extends SampleRobot {
             if (!js.getRawButton(11) && !js.getRawButton(10))
             	canPress = true;
             
+            
                         
             dashboard.putNumber("Total power: ", panel.getTotalPower());
             
