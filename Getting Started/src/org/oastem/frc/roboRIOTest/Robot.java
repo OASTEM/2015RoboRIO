@@ -155,17 +155,19 @@ public class Robot extends SampleRobot {
             
             if (js.getRawButton(11) && canPress)
             {
-            	position += 2;
+            	position += 5;
             	canPress = false;
             }
             else if (js.getRawButton(10) && canPress)
             {
-            	position -= 2;
+            	position -= 5;
             	canPress = false;
             }
             if (!js.getRawButton(11) && !js.getRawButton(10))
             	canPress = true;
             
+            if ((motor1.getPosition() < (position - 2)) || (motor1.getPosition() > (position + 2)))
+            	position = accel.accelerateValue(position);
             
                         
             dashboard.putNumber("Total power: ", panel.getTotalPower());
