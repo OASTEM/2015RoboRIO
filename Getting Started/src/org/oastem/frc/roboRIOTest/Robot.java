@@ -133,7 +133,6 @@ public class Robot extends SampleRobot {
         long currentTime;
         long startTime = 0;
         double position = 0;
-        double power = 0.0;
         boolean motorStart = false;
         boolean canPress = false;
         panel.clearStickyFaults();
@@ -144,6 +143,8 @@ public class Robot extends SampleRobot {
         while(isEnabled() && isOperatorControl()){
             currentTime = System.currentTimeMillis();
             //ds.mecanumDrive(js.getX(), js.getY(), js.getZ(), gyro.getAngle());
+            motor1.setPositionMode(CANJaguar.kQuadEncoder, 497, -1000, -.002, 1000);
+            motor1.enableControl();
             motor1.set(position);
             state = "Operator Control";
             
@@ -155,19 +156,33 @@ public class Robot extends SampleRobot {
             
             if (js.getRawButton(11) && canPress)
             {
-            	position += 5;
+            	position += 10;
             	canPress = false;
             }
             else if (js.getRawButton(10) && canPress)
             {
-            	position -= 5;
+            	position -= 10;
             	canPress = false;
             }
             if (!js.getRawButton(11) && !js.getRawButton(10))
             	canPress = true;
             
-            if ((motor1.getPosition() < (position - 2)) || (motor1.getPosition() > (position + 2)))
-            	position = accel.accelerateValue(position);
+            
+            if (((position - .25) < motor1.getPosition()) && (motor1.getPosition() < (position + .25)))
+            {
+            	motor1.set(position);
+            }
+            else if (((position - 2) < motor1.getPosition()) && (motor1.getPosition() < (position + 2)))
+            {
+            	motor1.setPercentMode(CANJaguar.kQuadEncoder, 497);
+            	motor1.enableControl();
+            	// we have to assume that .get() will return a nonzero value immediately
+            	//check for that
+            	dashboard.putNumber("Percentage: ", motor1.get());
+            	motor1.set(accel.decelerateValue(motor1.get(), 0));
+            }
+            	
+            	
             
                         
             dashboard.putNumber("Total power: ", panel.getTotalPower());
