@@ -105,13 +105,15 @@ public class Robot extends SampleRobot {
         
         dashboard = new Dashboard();
 
-        
-        /*server = CameraServer.getInstance();
+        //USBCamera asdf = new USBCamera("cam0");
+        //asdf.openCamera();
+        //asdf.startCapture();
+        server = CameraServer.getInstance();
         server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface
-        server.startAutomaticCapture(new USBCamera("cam0"));
+        server.startAutomaticCapture("cam0");
         //*/
-        cam = new ImageProcessing();
+        //cam = new ImageProcessing();
         
         
         //encoder = new Encoder(ENCODER_CH_A, ENCODER_CH_B);
@@ -177,7 +179,7 @@ public class Robot extends SampleRobot {
             // getRate
             dashboard.putString("Rate: ", encoder.getRate() + "");
             
-            cam.checkWebcam();
+            //cam.checkWebcam();
             
             // encodingScale
             //ACTIVATE LINE AT INIT

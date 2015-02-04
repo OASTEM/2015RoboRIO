@@ -42,6 +42,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/videoinput-windows-x86.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/videoinput.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/NetworkTables.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/WPILib.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/WPILib.jar" sourcepath="lib/WPILib-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
